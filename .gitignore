@@ -1,0 +1,50 @@
+# ===========================================
+# .gitignore para Webflow Designer Extension
+# ===========================================
+
+# Dependencias de Node
+node_modules/
+
+# Archivos de construcción / salida
+dist/
+build/
+out/
+
+# Variables de entorno
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs y editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Webflow CLI
+.webflow/
+
+# Archivos temporales y caché
+.cache/
+.temp/
+tmp/
+*.tmp
+
+# Archivos de respaldo
+*.bak
+*~
