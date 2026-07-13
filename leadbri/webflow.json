@@ -1,12 +1,12 @@
 {
   "name": "leadbri",
   "publicDir": "public",
-  "size": "comfortable",
+  "size": "default",
   "apiVersion": "2",
   "telemetry": {
     "global": {
       "allowTelemetry": true,
-      "lastPrompted": 1783733477460,
+      "lastPrompted": 1783963799964,
       "version": "2.1.1"
     }
   }

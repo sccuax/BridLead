@@ -1,16 +1,16 @@
-# Designer Extension Starter: TypeScript (Alt)
+# Designer Extension Starter: React
 
-Explore the [documentation](https://developers.webflow.com/designer/reference/introduction) for in-depth information about Designer Extension features and API.
+Explore the [documentation](https://developers.webflow.com/designer/reference/introduction) for detailed information on Designer Extension features and API.
 
-## Development
+## Local Development
 
 ```bash
 npm run dev
 ```
 
-This command installs dependencies, watches for changes in the `src/` folder, recompiles TypeScript files, and serves your extension files from `public/`. Use the displayed URL as the "Development URL" in Webflow Designer's Apps panel to launch your extension.
+This command installs dependencies, watches for changes in the `src/` folder, and serves your extension files from `./public/`. Use the displayed URL as the "Development URL" in Webflow Designer's Apps panel to launch your extension.
 
-## Deployment
+## Build for Distribution
 
 ```bash
 npm run build
