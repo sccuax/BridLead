@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
     margin: 0;
     background: #333;
@@ -10,7 +14,7 @@ body {
   
   button {
     color: #fff;
-    background: #0073e6;
+    background: var(--bg-cta);
     padding: 4px 8px;
     border: 2px solid #0073e6;
     border-radius: 4px;
@@ -21,3 +25,68 @@ body {
     border-color: #1280ee;
   }
   
+
+  /* ============================================
+   TOKENS EXPORTADOS DESDE FIGMA (Tokens Studio)
+   ============================================ */
+
+:root {
+
+  /* ===--------------- PRIMITIVES --------------=== */
+
+  /* Havelock Blue */
+  --blue-50: #f0f7fe;
+  --blue-100: #deecfb;
+  --blue-200: #c4dff9;
+  --blue-300: #9ccbf4;
+  --blue-400: #6dafed;
+  --blue-500: #468de5;
+  --blue-600: #3674da;
+  --blue-700: #2d60c8;
+  --blue-800: #2b4fa2;
+  --blue-900: #274481;
+  --blue-950: #1c2b4f;
+
+  /* Amethyst */
+  --purple-50: #faf5ff;
+  --purple-100: #f4e9fe;
+  --purple-200: #ead7fd;
+  --purple-300: #dab7fb;
+  --purple-400: #c488f8;
+  --purple-500: #ad5bf1;
+  --purple-600: #9f46e5;
+  --purple-700: #8328c8;
+  --purple-800: #6f26a3;
+  --purple-900: #5b2083;
+  --purple-950: #3e0a61;
+
+  /* Neutral */
+  --neutral-50: #f6f7f9;
+  --neutral-100: #eceef2;
+  --neutral-200: #d5dae2;
+  --neutral-300: #b1bac8;
+  --neutral-400: #8695aa;
+  --neutral-500: #64748b;
+  --neutral-600: #526077;
+  --neutral-700: #434e61;
+  --neutral-800: #3a4352;
+  --neutral-900: #343a46;
+  --neutral-950: #23272e;
+
+  /* ===--------------- SEMANTICS ---------------=== */
+
+  /* Text */
+  --text-primary: var(--neutral-950);
+  --text-secondary: var(--neutral-600);
+  --text-tertiary: var(--purple-800);
+  --text-on-accent: var(--neutral-50);
+  --text-on-action: var(--blue-950);
+
+  /* Backgrounds */
+  --bg-primary: var(--purple-50);
+  --bg-cta: var(--blue-500);
+
+  /* Borders */
+  --border-primary: var(--neutral-500);
+  --border-secondary: var(--neutral-300);
+}

@@ -22,8 +22,14 @@ export default {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: ["style-loader", "css-loader", "postcss-loader",],
       },
+      // === NUEVA REGLA PARA SVG ===
+    {
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
+      use: ['@svgr/webpack'],
+    },
     ],
   },
   devServer: {
