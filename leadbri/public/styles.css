@@ -2,6 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ========== SATOSHI FONT FAMILY ========== */
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url(./fonts/Satoshi-Light.woff2) format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url(./fonts/Satoshi-Regular.woff2) format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url(./fonts/Satoshi-Medium.woff2) format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url(./fonts/Satoshi-Bold.woff2) format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url(./fonts/Satoshi-Black.woff2) format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
     margin: 0;
     background: #333;
@@ -10,14 +52,13 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-family: var(--family);
   }
   
   button {
     color: #fff;
     background: var(--bg-cta);
-    padding: 4px 8px;
-    border: 2px solid #0073e6;
-    border-radius: 4px;
+    border-radius: 8px;
   }
   
   button:focus {
@@ -31,6 +72,9 @@ body {
    ============================================ */
 
 :root {
+
+/*-----------Family fonts--------------*/
+--family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   /* ===--------------- PRIMITIVES --------------=== */
 
@@ -89,4 +133,75 @@ body {
   /* Borders */
   --border-primary: var(--neutral-500);
   --border-secondary: var(--neutral-300);
+
+  /* states */
+  --on-hover-cta: var(--blue-700);
+  --on-hover-secondary: var(--purple-600);
+}
+
+
+/* ---------- utilitary classes for typography ---------- */
+
+.heading-1 {
+    font-family: var(--family);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 120%;
+    letter-spacing: 0.5px;
+}
+
+.heading-2 {
+    font-family: var(--family);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 120%;
+    letter-spacing: 0.5px;
+}
+
+.heading-3 { 
+    font-family: var(--family);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 120%;
+    letter-spacing: 0.5px;
+}
+
+.text-body-xs {
+    font-family: var(--family);
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 100%;
+    letter-spacing: 0.25px;
+}
+
+.text-body-s {
+    font-family: var(--family);
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 100%;
+    letter-spacing: 0.5px;
+}
+
+.text-body-m {
+    font-family: var(--family);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14.6;
+    letter-spacing: 0.5px;
+}
+
+.text-body-l {
+    font-family: var(--family);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 110%;
+    letter-spacing: 0.25px;
+}
+
+.text-body-xl {
+    font-family: var(--family);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 120%;
+    letter-spacing: 0.5px;
 }

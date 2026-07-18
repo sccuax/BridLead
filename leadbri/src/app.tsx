@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Icon from './Components/Icon'
+import { Button } from './Components/Buttons/button'
 
 const translations = {
     es: {
@@ -39,99 +40,119 @@ function App() {
     return (
         <div style={{
             height: '460px',
-            fontFamily: 'system-ui, sans-serif',
             background: 'var(--bg-primary)',
             display: 'flex',
             flexDirection: 'column',
+            gap: 20,
             alignItems: 'center',
             padding: '24px 20px 20px',
             position: 'relative',
         }}>
-
             {/* Lang switch */}
             <div className='flex w-full justify-end items-center'>
-            <button
-                onClick={() => setLang(lang === 'es' ? 'en' : 'es')}
-                className="flex items-center gap-3 bg-transparent px-0 py-0 text-xs text-[var(--text-tertiary)] underline cursor-pointer"
-                style={{
-                    border: 'none',
-                    fontSize: 12,
-                    lineHeight: '14.6px', letterSpacing: '0.5px', fontWeight: 500,
-                }}
-                aria-label={`Cambiar idioma a ${t.langLabel}`}
-            >
-                {t.langLabel} <Icon 
-      name={lang === 'es' ? 'english' : 'spanish'} 
-      className="" 
-    />
-            </button>
+                <button
+                    onClick={() => setLang(lang === 'es' ? 'en' : 'es')}
+                    className="flex items-center gap-3 bg-transparent px-0 py-0 text-xs text-[var(--text-tertiary)]
+                    underline cursor-pointer font-satoshi"
+                    style={{
+                        border: 'none',
+                        fontSize: 12,
+                        lineHeight: '14.6px', letterSpacing: '0.5px', fontWeight: 500,
+                    }}
+                    aria-label={`Cambiar idioma a ${t.langLabel}`}
+                >
+                    {t.langLabel} <Icon
+                        name={lang === 'es' ? 'english' : 'spanish'}
+                        className=""
+                    />
+                </button>
             </div>
 
             {/* Logo */}
-            <div style={{
-                marginTop: 40, marginBottom: 12,
-                width: 56, height: 56, borderRadius: 14,
-                background: 'linear-gradient(135deg, #468de5, #9f46e5)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}>
-                <svg width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-                    <path d="M6 22L14 6L22 22" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M9 17H19" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                </svg>
+            <div className="flex flex-col items-center gap-2">
+                <div style={{
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}>
+                    <svg width="80" height="54" viewBox="0 0 80 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_39_135)">
+                            <g clip-path="url(#clip1_39_135)">
+                                <path d="M42.5519 18.6408C43.3473 18.8049 46.415 20.0832 47.0921 20.5142C46.2711 20.5915 45.5267 19.9155 45.6541 20.993C45.6835 21.2419 45.5657 21.5458 45.4606 21.7648C45.4061 21.8764 45.3941 22.0041 45.4269 22.124C45.5201 22.2573 45.5339 22.3038 45.5673 22.4762C43.9443 22.1737 43.242 22.1054 41.6813 21.9023C42.5974 21.3039 43.4254 21.8489 44.4395 21.9493C45.3175 22.0364 44.5859 21.537 44.793 20.9226C45.029 20.2224 44.9992 19.875 44.3475 19.6059L43.8289 19.3829C43.0052 19.0147 43.202 19.1709 42.5519 18.6408Z" fill="#8C44CB" />
+                                <path d="M47.6996 9.49129C47.6509 10.4865 46.7544 10.3205 47.2431 11.1397C47.3049 11.2433 47.3462 12.5345 47.3144 12.8026C47.0568 14.9812 47.9325 14.0434 48.5107 15.1911C47.167 14.6108 47.7521 14.4537 46.5005 15.3448C46.7515 14.7481 46.6793 14.9215 47.0327 14.4872C47.118 14.3824 46.9511 13.1695 46.4118 13.6568C46.2079 13.8409 45.8569 13.9135 45.5993 13.9681C46.979 12.6965 46.7743 12.9486 44.778 12.5246C45.5929 12.4849 46.544 12.1178 46.8827 12.9925C46.8986 12.6548 46.9583 11.4665 46.8351 11.0907C46.8222 11.0515 46.6586 11.0146 46.611 11.0198C46.2138 11.0642 46.0333 10.974 45.7006 10.7908C47.4271 10.6659 46.3586 10.5676 47.6996 9.49129Z" fill="#8C44CB" />
+                                <path d="M29.3518 8.96553C30.0421 8.54717 30.8799 8.44963 31.6477 8.69795C32.7872 9.06381 33.2525 9.76807 33.7766 10.7585C36.5148 10.4292 45.6332 10.7881 45.7004 10.7907L47.1946 10.6618C47.2564 10.7665 47.3464 12.5334 47.3147 12.8024C47.0571 14.981 47.9328 14.0436 48.511 15.1911C47.1672 14.6108 47.7518 14.4534 46.5002 15.3444C45.6825 16.2575 43.6943 17.2313 42.6291 17.9265C42.076 18.2875 42.348 18.1882 42.552 18.6403C43.3474 18.8044 46.415 20.0834 47.092 20.5144C46.2712 20.5916 45.5273 19.9157 45.6545 20.9929C45.6839 21.2418 45.5654 21.5463 45.4602 21.7653C45.4059 21.8767 45.3944 22.0041 45.427 22.1237C45.5202 22.2571 45.5343 22.3039 45.5676 22.4763C43.9447 22.1738 43.2416 22.1052 41.6809 21.902C38.8168 21.6236 35.4893 22.0634 32.7747 22.9938C24.5613 25.809 20.2327 32.1359 16.5959 39.5339C17.4314 40.4897 17.8818 41.2198 17.7063 42.5554C17.601 43.3972 17.1631 44.1623 16.4905 44.6794C15.8683 45.1564 15.0723 45.3464 14.302 45.2009C13.083 44.9682 12.5301 44.2135 11.8957 43.2517L6.20727 43.2624C2.46997 50.3534 -4.12329 39.5383 3.55981 39.0827C5.93225 32.8658 8.83006 27.9335 12.9055 22.7058C11.8971 21.7437 11.2105 20.7381 11.4543 19.2731C11.5924 18.4634 12.0582 17.7458 12.7415 17.2897C13.4054 16.8395 14.2283 16.6891 15.009 16.8747C16.1141 17.1425 16.5454 17.7251 17.1125 18.6218C21.0652 15.671 23.3283 14.3719 27.8186 12.3815C27.782 10.9434 28.003 9.77286 29.3518 8.96553ZM13.4514 31.4636C9.53133 34.1208 7.09412 35.7318 5.30005 40.152C5.73736 40.6322 5.84021 40.7874 6.15259 41.3562C6.54508 41.6814 10.6832 41.5447 11.6204 41.5563C12.2344 39.9263 12.1074 40.066 13.6028 38.905C13.6005 37.9202 13.7971 31.774 13.4514 31.4636ZM21.0305 27.5251C19.2179 28.2637 16.9121 29.404 15.3118 30.5075C15.2906 31.6662 15.2329 36.8371 15.3772 37.6472C17.2439 34.6325 18.627 30.9487 20.885 28.0554C21.0335 27.8649 21.0541 27.7524 21.0305 27.5251ZM13.4973 25.3229C12.6577 26.1767 9.07742 31.2049 9.26587 32.1354C10.7331 31.0311 12.0876 30.1734 13.6028 29.1696C13.5881 28.3641 13.6408 25.9118 13.4973 25.3229ZM24.8547 22.0554C22.1882 22.1377 19.603 22.0869 16.9446 22.1247C16.3128 22.7326 15.9868 22.9921 15.3088 23.5202L15.3059 28.3171C16.9567 27.3255 18.6694 26.4402 20.4329 25.6667C21.3889 25.2321 22.1217 24.8825 23.1145 24.5671C23.7106 23.7411 24.2909 22.9038 24.8547 22.0554ZM28.6243 22.2282C28.5733 22.0397 27.1271 22.1577 26.8928 22.1667C25.7549 23.6809 26.6167 23.1462 27.8645 22.6491C28.0937 22.5501 28.4912 22.4268 28.6243 22.2282ZM32.7756 14.5104C31.634 14.964 31.7133 14.8731 30.6301 15.0104C29.7425 17.0139 29.0169 18.5864 27.7991 20.4313C29.6784 20.4643 31.5584 20.4619 33.4377 20.4245C35.1365 19.7127 36.6256 19.0246 38.2903 18.2302C37.7453 17.894 32.7453 14.5026 32.7756 14.5104ZM28.3811 14.3171C24.8613 15.7689 21.1368 17.8602 18.1418 20.2653C17.9493 20.4199 18.4711 20.4305 18.4534 20.4304L25.8176 20.4499L25.9661 20.1833C26.8646 18.5969 27.8808 17.0127 28.5325 15.3103C28.7543 14.7304 29.0995 14.3702 28.3811 14.3171ZM41.1448 19.78C40.1655 19.2997 40.2589 19.2098 39.2805 19.7722C39.1413 19.8291 38.6164 19.9766 38.6487 20.1774C38.797 20.2751 41.3713 20.2158 41.595 20.1169L41.6204 20.0778C41.5613 19.92 41.2904 19.8359 41.1448 19.78ZM44.7786 12.5241C40.61 12.1194 37.8136 12.0722 33.6418 12.7829C35.9277 14.7029 37.6005 15.7494 40.2014 17.2263C41.4578 16.6303 42.6701 15.8843 43.842 15.1384C44.2904 14.853 45.2069 14.1194 45.5999 13.9685C46.9795 12.6969 46.7747 12.9481 44.7786 12.5241Z" fill="url(#paint0_linear_39_135)" />
+                                <path d="M47.7002 9.49127C49.0809 8.36946 50.8992 8.31757 52.0684 9.74908C52.6279 10.4341 52.5135 11.6011 52.8359 12.378C53.8383 13.2221 55.9514 13.8165 57.1592 14.5196C59.2398 15.7309 61.0501 16.9156 62.9609 18.3174C63.5779 17.4173 64.0331 16.7608 65.1865 16.5196C65.9958 16.3462 66.8404 16.533 67.502 17.0303C68.1878 17.5326 68.6464 18.2868 68.7754 19.127C69.0058 20.6835 68.2533 21.5951 67.1182 22.5001C70.876 27.754 74.3727 32.9768 76.6992 39.0704C78.7517 39.1744 80.2374 40.3861 79.9688 42.5665C79.8491 43.5154 79.3607 44.3798 78.6094 44.9717C76.5125 46.6065 74.7533 45.1293 73.7666 43.1563L68.1572 43.1983C67.1659 44.8481 65.5031 45.9479 63.6641 44.7559C62.9067 44.2648 62.3979 43.4705 62.2686 42.5772C62.0757 41.3168 62.5904 40.3067 63.4473 39.4249C59.394 31.2495 55.1525 25.7227 46.3145 22.7247C46.066 22.6403 45.8169 22.5578 45.5674 22.4766C45.534 22.3043 45.52 22.2574 45.4268 22.1241C45.394 22.0042 45.4065 21.8763 45.4609 21.7647C45.5661 21.5457 45.6836 21.242 45.6543 20.9932C45.5269 19.9157 46.2718 20.592 47.0928 20.5147C48.3656 20.3862 50.7983 20.4598 52.2012 20.4493C51.432 18.8202 50.5861 17.2572 49.9248 15.5782C49.8797 15.4637 48.9329 15.4522 48.5108 15.1915C47.9326 14.0439 47.0569 14.9812 47.3145 12.8028C47.3463 12.5348 47.305 11.2433 47.2432 11.1397C46.7547 10.3207 47.6515 10.4864 47.7002 9.49127ZM66.5781 39.0635C67.7901 39.9314 67.7701 39.9468 68.5176 41.3692C69.3308 41.3779 72.9767 41.4808 73.874 41.2686C73.9414 41.2527 74.2128 40.7236 74.2852 40.5938C75.1781 39.4892 74.9892 40.3513 74.3066 38.7227C73.1552 35.9761 69.1491 32.8049 66.5879 31.5469L66.5781 39.0635ZM58.6016 27.5801C59.1892 28.4881 64.0335 35.7941 64.6631 37.5352C64.6719 37.5583 64.8325 37.5184 64.8457 37.5167L64.7959 30.4278C63.0017 29.3908 60.5608 28.1439 58.6016 27.5801ZM66.5596 29.4102C68.0265 30.2531 69.4652 31.1448 70.8731 32.0831C70.4393 30.8969 67.3935 25.8905 66.5762 25.2862L66.5596 29.4102ZM55.2568 22.1192C55.5903 22.7677 56.3365 24.1919 56.9785 24.5176C58.4921 25.2855 60.1034 25.9267 61.6358 26.6631C62.6579 27.1342 63.8843 27.9866 64.8184 28.3614C64.8315 26.6044 64.8199 24.8468 64.7842 23.0899C64.3606 22.7785 64.0402 22.4957 63.6592 22.1329C60.8765 22.1133 58.0169 22.17 55.2568 22.1192ZM53.2647 22.2139C52.7782 22.1218 50.4098 22.1223 51.9024 22.4864C52.182 22.6082 53.3689 23.198 53.5742 23.1085C53.6322 22.9197 53.3424 22.4068 53.2647 22.2139ZM51.7481 14.6778C51.6461 15.7894 53.733 19.6958 54.1494 20.4249C56.8093 20.3973 59.47 20.4006 62.1299 20.4337C62.3272 19.4927 53.2485 14.8458 51.9346 14.3282C51.9099 14.378 51.7463 14.6953 51.7481 14.6778Z" fill="url(#paint1_linear_39_135)" />
+                            </g>
+                        </g>
+                        <defs>
+                            <linearGradient id="paint0_linear_39_135" x1="41.3785" y1="33.1102" x2="6.20527" y2="22.3666" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#6862D3" />
+                                <stop offset="1" stop-color="#18ABEF" />
+                            </linearGradient>
+                            <linearGradient id="paint1_linear_39_135" x1="77.1275" y1="25.0288" x2="46.3521" y2="29.4489" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#CA10BA" />
+                                <stop offset="1" stop-color="#844CCE" />
+                            </linearGradient>
+                            <clipPath id="clip0_39_135">
+                                <rect width="80" height="54" rx="14" fill="white" />
+                            </clipPath>
+                            <clipPath id="clip1_39_135">
+                                <rect width="80" height="80" fill="white" transform="translate(0 -13)" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+
+                </div>
+
+                <h1 style={{ fontSize: 24, fontWeight: 500, letterSpacing: '0.5px' }} className="text-[var(--text-primary)] font-satoshi">
+                    Leadbri
+                </h1>
+
+                <p style={{
+                    fontSize: 14, color: 'var(--text-secondary)', textAlign: 'center',
+                    whiteSpace: 'pre-line',
+                }}
+                    className="leading-[120%] tracking-[0.5px] font-satoshi"
+                >
+                    {t.tagline}
+                </p>
             </div>
 
-            <h1 style={{ fontSize: 20, fontWeight: 500, color: '#1a0a2e', marginBottom: 6 }} className="">
-                Leadbri
-            </h1>
 
-            <p style={{
-                fontSize: 11, color: '#9980b3', textAlign: 'center',
-                lineHeight: 1.6, marginBottom: 36, whiteSpace: 'pre-line',
-            }}>
-                {t.tagline}
-            </p>
-
+            <div className='flex w-full border-b border-[var(--border-secondary)]
+             flex-col gap-[10px] pt-[12px] pb-[28px]'>
             {/* Botón login */}
-            <button
+            <div className='w-full text-[var(--text-on-accent)]'>
+                <Button
+                variant="primary"
+                size="lg"
                 onClick={handleLogin}
-                style={{
-                    width: '100%', padding: '10px 0', borderRadius: 8,
-                    border: '1.5px solid #000', background: 'white',
-                    color: '#000', fontSize: 12, fontWeight: 500,
-                    cursor: 'pointer', display: 'flex', alignItems: 'center',
-                    justifyContent: 'center', gap: 7, marginBottom: 8,
-                }}
+                ariaLabel={t.login}
             >
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                </svg>
+                <Icon name="figma" className="" />
                 {t.login}
-            </button>
+            </Button>
+            </div>
+
 
             {/* Botón docs */}
-            <button
+            <div className='w-full'>
+                <Button
+                variant="secondary"
+                size="lg"
+                href="https://leadbri.vercel.app/docs"
                 onClick={handleDocs}
-                style={{
-                    width: '100%', padding: '10px 0', borderRadius: 8,
-                    border: '1.5px solid #000', background: 'white',
-                    color: '#000', fontSize: 12, fontWeight: 500,
-                    cursor: 'pointer', display: 'flex', alignItems: 'center',
-                    justifyContent: 'center', gap: 7, marginBottom: 20,
-                }}
+                ariaLabel={t.docs}
             >
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-                </svg>
+                <Icon name="docs" className="[&_path]:group-hover:stroke-[var(--border-secondary)]" />
                 {t.docs}
-            </button>
+            </Button>
+            </div>
+            </div>
 
-            <hr style={{ width: '100%', border: 'none', borderTop: '0.5px solid #e2d9f3', marginBottom: 14 }} />
 
             {/* Legal */}
-            <div style={{ display: 'flex', gap: 12 }}>
-                <a href="#" style={{ fontSize: 10, color: '#c4b5dc' }}>{t.privacy}</a>
-                <a href="#" style={{ fontSize: 10, color: '#c4b5dc' }}>{t.terms}</a>
+            <div className='flex flex-row gap-4'>
+                <a href="#" className='text-body-xs text-[var(--text-tertiary)] underline decoration-[var(--purple-500)]'>{t.privacy}</a>
+                <a href="#" className='text-body-xs text-[var(--text-tertiary)] underline decoration-[var(--purple-500)]'>{t.terms}</a>
             </div>
 
         </div>

@@ -9,6 +9,7 @@ export default {
   output: {
     filename: "bundle.js",
     path: path.resolve(dirname, "public"),
+    assetModuleFilename: "fonts/[name][ext][query]",
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"],
@@ -30,6 +31,14 @@ export default {
       issuer: /\.[jt]sx?$/,
       use: ['@svgr/webpack'],
     },
+    // === NUEVA REGLA PARA FONTS ===
+    {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        type: "asset/resource",
+        generator: {
+          filename: "fonts/[name][ext]",
+        },
+      },
     ],
   },
   devServer: {
