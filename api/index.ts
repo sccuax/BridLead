@@ -1,43 +1,26 @@
 import { Hono } from 'hono'
+import { logger } from 'hono/logger'
+import { prettyJSON } from 'hono/pretty-json'
+import { corsMiddleware } from './src/middleware/cors'
+import auth from './src/routes/auth'
+import figma from './src/routes/figma'
+import health from './src/routes/health'
 
 const app = new Hono()
 
-app.get('/', (c) => c.json({ status: 'Leadbri API running' }))
+app.use(logger())
+app.use(prettyJSON())
+app.use(corsMiddleware)
 
-// Redirige al usuario a Figma para autorizar
-app.get('/auth/figma', (c) => {
-  const clientId = process.env.FIGMA_CLIENT_ID!
-  const redirectUri = process.env.FIGMA_REDIRECT_URI!
-  const url = `https://www.figma.com/oauth?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=file_content:read&state=leadbri&response_type=code`
-  return c.redirect(url)
-})
+app.route('/auth', auth)
+app.route('/figma', figma)
+app.route('/health', health)
 
-// Figma redirige aquí con el código
-app.get('/auth/figma/callback', async (c) => {
-  const code = c.req.query('code')
-  if (!code) return c.json({ error: 'No code received' }, 400)
+app.notFound((c) => c.json({ error: 'Not Found' }, 404))
 
-  const clientId = process.env.FIGMA_CLIENT_ID!
-  const clientSecret = process.env.FIGMA_CLIENT_SECRET!
-  const redirectUri = process.env.FIGMA_REDIRECT_URI!
-
-  const credentials = Buffer.from(`${clientId}:${clientSecret}`).toString('base64')
-
-  const response = await fetch('https://api.figma.com/v1/oauth/token', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': `Basic ${credentials}`
-    },
-    body: new URLSearchParams({
-      redirect_uri: redirectUri,
-      code,
-      grant_type: 'authorization_code'
-    })
-  })
-
-  const token = await response.json()
-  return c.json({ success: true, token })
+app.onError((err, c) => {
+  console.error(err)
+  return c.json({ error: 'Internal Server Error' }, 500)
 })
 
 export default app

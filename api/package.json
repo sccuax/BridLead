@@ -4,15 +4,17 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "echo ok",
-    "start": "tsx src/index.ts"
+    "dev": "tsx index.ts",
+    "build": "tsc",
+    "start": "tsx index.ts"
   },
   "dependencies": {
     "hono": "latest",
-    "typescript": "^5.4.5"
+    "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@types/node": "latest",
-    "tsx": "latest"
+    "@types/node": "^26.1.1",
+    "tsx": "latest",
+    "typescript": "^5.4.5"
   }
 }
